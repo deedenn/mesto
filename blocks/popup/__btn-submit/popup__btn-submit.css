@@ -1,0 +1,17 @@
+.popup__btn-submit {
+    margin-top: 18px;
+    padding: 0;
+    max-width: 358px;
+    min-height: 50px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+@media (max-width: 500px) {
+    .popup__btn-submit {
+        margin: 15px 0 25px;
+        width: 238px;
+    }
+}
