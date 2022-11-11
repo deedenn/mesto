@@ -9,8 +9,9 @@
     height: 19px;
     cursor: pointer;
     margin: 0;
+    padding: 0;
 }
 
 .element__btn-like:hover {
-    opacity: 20%;
+    opacity: 50%;
 }

@@ -3,12 +3,11 @@
     padding-bottom: 41px;
     max-width: 880px;
     border-bottom: 1px solid;
-    border-bottom-color: #545454;
+    border-bottom-color: rgba(84, 84, 84, 0.7);
 }
 
 @media (max-width: 890px) {
     .header {
-        margin-left: 27px;
         padding-bottom: 32px;
         margin-bottom: 42px;
     }

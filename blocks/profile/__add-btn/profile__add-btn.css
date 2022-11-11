@@ -8,18 +8,21 @@
     background-image: url('../../../images/Add_Button.svg');
     background-position: center;
     background-repeat: no-repeat;
+    background-size: 22px;
     border: 2px solid #ffff;
+    border-radius: 2px;
     justify-self: end;
     align-self: center;
 }
 
 .profile__add-btn:hover {
-    opacity: 20%;
+    opacity: 60%;
 }
 
 
 @media (max-width: 450px) {
     .profile__add-btn {
         width: 282px;
+        background-size: 16px;
     }
 }
