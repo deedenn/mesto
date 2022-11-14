@@ -5,14 +5,14 @@ let popupCloseBtn = document.querySelector('.popup__btn-close');
 let popupSaveBtn = document.querySelector('.popup__btn-submit');
 let profileName = document.querySelector('.profile__name');
 let profileDescription = document.querySelector('.profile__description');
-let popup__input_el_name = document.querySelector('.popup__input-name');
-let popup__input_el_description = document.querySelector('.popup__input-description');
+let inputName = document.querySelector('.popup__input_el_name');
+let inputDescription = document.querySelector('.popup__input_el_description');
 let formElement = document.querySelector('.form');
 
 function popupOpen () {
     popup.classList.add('popup_opened');
-    popup__input_el_name.value = profileName.textContent;
-    popup__input_el_description.value = profileDescription.textContent;
+    inputName.value = profileName.textContent;
+    inputDescription.value = profileDescription.textContent;
 };
 
 function popupClose () {
@@ -21,8 +21,8 @@ function popupClose () {
 
 function popupSave (evt) {
     evt.preventDefault();
-    profileName.textContent = popup__input_el_name.value;
-    profileDescription.textContent = popup__input_el_description.value;
+    profileName.textContent = inputName.value;
+    profileDescription.textContent = inputDescription.value;
     popupClose();
 };
 
