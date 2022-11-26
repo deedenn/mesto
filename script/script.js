@@ -11,7 +11,8 @@ const inputName = document.querySelector('.popup__input_el_name');
 const inputDescription = document.querySelector('.popup__input_el_description');
 const inputTitle = document.querySelector('.popup__input_el_title');
 const inputLink = document.querySelector('.popup__input_el_link');
-const formElement = document.querySelector('.form');
+const formEditElement = document.querySelector('.form__edit');
+const formAddElement = document.querySelector('.form__add');
 const ElementImage = document.querySelector('.element__image');
 const ElementName = document.querySelector('.element__name');
 const ElementBtnLike = document.querySelector('.element__btn-like');
@@ -58,8 +59,6 @@ const generateCard = (dataCard) => {
 
   const cardImage = newCard.querySelector('.element__image');
   cardImage.src = dataCard.link;
-  console.log(cardImage.link);
-
   return newCard;
 }
 
@@ -89,14 +88,24 @@ function popupClose (popup) {
     popup.classList.remove('popup_opened');
 };
 
-// сохранить изменения
+// сохранить изменения Edit
 
-function popupSave (evt) {
+function popupEditSave (evt) {
     evt.preventDefault();
     profileName.textContent = inputName.value;
     profileDescription.textContent = inputDescription.value;
     popupClose();
 };
+
+// сохранить изменения Add
+
+function popupAddSave (evt) {
+  evt.preventDefault();
+  renderCard({name: inputTitle.value, link: inputLink.value});
+  popupClose(popupAdd);
+  inputTitle.value = '';
+  inputLink.value = '';
+}
 
 // обработка событий кнопок
 
@@ -119,7 +128,7 @@ popupCloseBtn.addEventListener('click',
       }
 );
 
-formElement.addEventListener('submit', popupSave);
+formAddElement.addEventListener('submit', popupAddSave);
 
 function btnLike () {
     ElementBtnLike.classList.add('element__btn-like_active');
