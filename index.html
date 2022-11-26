@@ -32,7 +32,7 @@
         </section>
 
         <div class="elements">
-
+<!--
             <article class="element">
                 <img class="element__image" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаевск">
                 <div class="element__description">
@@ -80,15 +80,17 @@
                     <button class="element__btn-like element__btn-like_active" type="button"></button>
                 </div>
             </article>
-
+       -->
         </div>
+
+ 
 
         <footer class="footer">
             <p class="footer__text" lang="en">&copy; 2020 Mesto Russia</p>
         </footer>
     </main>
 
-    <div class="popup">
+    <div class="popup popup__edit">
         <div class="popup__container">
             <button class="popup__btn-close" type="button"></button>
             <h3 class="popup__name">Редактировать профиль</h3>
@@ -100,6 +102,42 @@
             </form>
         </div>
     </div>
+
+    <div class="popup popup__add">
+        <div class="popup__container">
+            <button class="popup__btn-close" type="button"></button>
+            <h3 class="popup__name">Новое место</h3>
+            <form class="form" name="edit_form">
+                <input type="text" id="input__name" value="Название" class="popup__input popup__input_el_title">
+                <input type="text" id="input__description" value="Ссылка на картинку"
+                    class="popup__input popup__input_el_link">
+                <button type="submit" class="popup__btn-submit">Создать</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="popup popup__showimg">
+        <div class="popup__container">
+            <h3 class="popup__name">Новое место</h3>
+            <form class="form" name="edit_form">
+                <input type="text" id="input__name" value="Название" class="popup__input popup__input_el_title">
+                <input type="text" id="input__description" value="Ссылка на картинку"
+                    class="popup__input popup__input_el_link">
+                <button type="submit" class="popup__btn-submit">Создать</button>
+            </form>
+        </div>
+    </div>
+
+    <template id="element-template">
+        <article class="element">
+            <img class="element__image">
+            <button class="element__btn-del" type="button"></button>
+            <div class="element__description">
+                <h2 class="element__name"></h2>
+                <button class="element__btn-like element__btn-like_active" type="button"></button>
+            </div>
+        </article>
+    </template>
 
     <script src="./script/script.js"></script>
 
