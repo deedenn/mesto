@@ -5,6 +5,9 @@ const profileEditBtn = document.querySelector('.profile__edit-btn');
 const profileAddBtn = document.querySelector('.profile__add-btn');
 const popupCloseBtn = document.querySelector('.popup__btn-close');
 const popupSaveBtn = document.querySelector('.popup__btn-submit');
+const popupImage = document.querySelector('.popup__showimg');
+const popupBigImage = document.querySelector('.big-popup__image');
+const popupBigName = document.querySelector('.big-popup__name');
 const profileName = document.querySelector('.profile__name');
 const profileDescription = document.querySelector('.profile__description');
 const inputName = document.querySelector('.popup__input_el_name');
@@ -15,7 +18,6 @@ const formEditElement = document.querySelector('.form__edit');
 const formAddElement = document.querySelector('.form__add');
 const ElementImage = document.querySelector('.element__image');
 const ElementName = document.querySelector('.element__name');
-const ElementBtnLike = document.querySelector('.element__btn-like');
 const ElementContainer = document.querySelector('.elements');
 
 const initialCards = [
@@ -59,9 +61,28 @@ const generateCard = (dataCard) => {
 
   const cardImage = newCard.querySelector('.element__image');
   cardImage.src = dataCard.link;
+
+  cardImage.addEventListener('click', () => {
+    renderBigPopup(dataCard);
+    popupOpen(popupImage);
+  });
+
+  const CardLikeBtn = newCard.querySelector('.element__btn-like');
+
+  // удаление карточки
+  const deleteBtn = newCard.querySelector('.element__btn-del');
+  
   return newCard;
 }
 
+const deleteCard = (evt) => {
+  evt.target.closest('.element').remove();
+}
+
+const like = (evt) => {
+  evt.target.closest('.element').classList.toggle('element__btn-like_active');
+}
+ 
 // добавление карточки
 
 const renderCard = (dataCard) => {
@@ -85,6 +106,7 @@ function popupOpen (popup) {
 // закрыть попап
 
 function popupClose (popup) {
+    console.log(popup);
     popup.classList.remove('popup_opened');
 };
 
@@ -94,7 +116,7 @@ function popupEditSave (evt) {
     evt.preventDefault();
     profileName.textContent = inputName.value;
     profileDescription.textContent = inputDescription.value;
-    popupClose();
+    popupClose(popupEdit);
 };
 
 // сохранить изменения Add
@@ -123,21 +145,21 @@ profileAddBtn.addEventListener('click',
 
 popupCloseBtn.addEventListener('click',
     () => {
-      popupClose(popupAdd);  
-      popupClose(popupEdit);
+      popupClose();
       }
 );
 
 formAddElement.addEventListener('submit', popupAddSave);
 
-function btnLike () {
-    ElementBtnLike.classList.add('element__btn-like_active');
-    ElementBtnLike.classList.remove('element__btn-like');
-  } 
-
-
 // добавляем лайки
 
-const handleCardLike = (evt) => {
-  evt.target.classList.toggle('element__like_active');
+//const CardLike = (evt) => {
+//  evt.target.classList.toggle('.element__btn-like_active');
+//}
+
+// большой попап
+
+const renderBigPopup = (dataCard) => {
+  popupBigImage.src = dataCard.link;
+  popupBigName.textContent = dataCard.name;
 }

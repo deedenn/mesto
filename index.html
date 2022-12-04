@@ -32,7 +32,7 @@
         </section>
 
         <div class="elements">
-<!--
+            <!--
             <article class="element">
                 <img class="element__image" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаевск">
                 <div class="element__description">
@@ -83,7 +83,7 @@
        -->
         </div>
 
- 
+
 
         <footer class="footer">
             <p class="footer__text" lang="en">&copy; 2020 Mesto Russia</p>
@@ -107,23 +107,20 @@
         <div class="popup__container">
             <button class="popup__btn-close" type="button"></button>
             <h3 class="popup__name">Новое место</h3>
-            <form class="form form__add" name="edit_form">
+            <form class="form form__add" name="add_form">
                 <input type="text" id="input__name" class="popup__input popup__input_el_title" placeholder="Название">
-                <input type="text" id="input__description" class="popup__input popup__input_el_link" placeholder="Ссылка на картинку">
+                <input type="text" id="input__description" class="popup__input popup__input_el_link"
+                    placeholder="Ссылка на картинку">
                 <button type="submit" class="popup__btn-submit">Создать</button>
             </form>
         </div>
     </div>
 
     <div class="popup popup__showimg">
-        <div class="popup__container">
-            <h3 class="popup__name">Новое место</h3>
-            <form class="form" name="edit_form">
-                <input type="text" id="input__name" value="Название" class="popup__input popup__input_el_title">
-                <input type="text" id="input__description" value="Ссылка на картинку"
-                    class="popup__input popup__input_el_link">
-                <button type="submit" class="popup__btn-submit">Создать</button>
-            </form>
+        <div class="big-popup">
+            <button class="popup__btn-close" type="button"></button>
+            <img class="big-popup__image">
+            <h2 class="big-popup__name"></h2>
         </div>
     </div>
 
