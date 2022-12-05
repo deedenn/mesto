@@ -6,7 +6,7 @@ const profileEditBtn = document.querySelector('.profile__edit-btn');
 const profileAddBtn = document.querySelector('.profile__add-btn');
 const popupCloseBtn = document.querySelectorAll('.popup__btn-close');
 const popupSaveBtn = document.querySelector('.popup__btn-submit');
-const popupImage = document.querySelector('.popup__showimg');
+const popupImage = document.querySelector('.popup_showimg');
 const popupBigImage = document.querySelector('.big-popup__image');
 const popupBigName = document.querySelector('.big-popup__name');
 const profileName = document.querySelector('.profile__name');
@@ -24,27 +24,33 @@ const ElementContainer = document.querySelector('.elements');
 const initialCards = [
   {
     name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
+    alt: 'Архыз'
   },
   {
     name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg',
+    alt: 'Челябинская область'
   },
   {
     name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',
+    alt: 'Иваново'
   },
   {
     name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
+    alt: 'Камчатка'
   },
   {
     name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg',
+    alt: 'Холмогорский район'
   },
   {
     name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
+    alt: 'Байкал'
   }
 ];
 
@@ -62,10 +68,11 @@ const generateCard = (dataCard) => {
 
   const cardImage = newCard.querySelector('.element__image');
   cardImage.src = dataCard.link;
+  cardImage.alt = dataCard.alt;
 
   cardImage.addEventListener('click', () => {
     renderBigPopup(dataCard);
-    popupOpen(popupImage);
+    openPopup(popupImage);
   });
 
   // добавление лайков
@@ -101,7 +108,7 @@ initialCards.forEach((dataCard) => {
 
 // открыть попап
 
-function popupOpen (popup) {
+function openPopup (popup) {
     popup.classList.add('popup_opened');
     inputName.value = profileName.textContent;
     inputDescription.value = profileDescription.textContent;
@@ -111,28 +118,28 @@ function popupOpen (popup) {
 
 popupCloseBtn.forEach((button) => {
   const popup = button.closest('.popup');
-  button.addEventListener('click', () => popupClose(popup));
+  button.addEventListener('click', () => closePopup(popup));
 });
 
-function popupClose (popup) {
+function closePopup (popup) {
     popup.classList.remove('popup_opened');
 };
 
 // сохранить изменения Edit
 
-function popupEditSave (evt) {
+function savePopupEdit (evt) {
     evt.preventDefault();
     profileName.textContent = inputName.value;
     profileDescription.textContent = inputDescription.value;
-    popupClose(popupEdit);
+    closePopup(popupEdit);
 };
 
 // сохранить изменения Add
 
-function popupAddSave (evt) {
+function savePopupAdd (evt) {
   evt.preventDefault();
   renderCard({name: inputTitle.value, link: inputLink.value});
-  popupClose(popupAdd);
+  closePopup(popupAdd);
   inputTitle.value = '';
   inputLink.value = '';
 };
@@ -140,17 +147,17 @@ function popupAddSave (evt) {
 // обработка событий кнопок
 
 profileEditBtn.addEventListener('click', () => {
-        popupOpen(popupEdit);
+        openPopup(popupEdit);
     }
 );
 
 profileAddBtn.addEventListener('click', () => {
-        popupOpen(popupAdd);
+        openPopup(popupAdd);
     }
 );
 
-formEditElement.addEventListener('submit', popupEditSave);
-formAddElement.addEventListener('submit', popupAddSave);
+formEditElement.addEventListener('submit', savePopupEdit);
+formAddElement.addEventListener('submit', savePopupAdd);
 
 // большой попап
 
