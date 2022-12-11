@@ -1,5 +1,6 @@
 const popupEdit = document.querySelector('.popup_edit');
 const popupAdd = document.querySelector('.popup_add');
+const popups = document.querySelectorAll('.popup');
 const popupShowimg = document.querySelector('.popup_shomimg');
 const profileEditBtn = document.querySelector('.profile__edit-btn');
 const profileAddBtn = document.querySelector('.profile__add-btn');
@@ -126,6 +127,16 @@ const closeOnEsc = (evt) => {
     document.querySelector('.popup_opened').classList.remove('popup_opened');
   }
 }
+
+// закрыть попап на оверлей
+
+popups.forEach(function(popup) {
+  popup.addEventListener('mousedown', (evt) => {
+    if (evt.target === evt.currentTarget) {
+      closePopup(popup);
+    }
+  })
+})
 
 function closePopup (popup) {
   popup.classList.remove('popup_opened');

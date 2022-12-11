@@ -4,26 +4,27 @@
 
 const validationConfig = {
     formSelector: '.form',
-    inputSelector: '.form__item',
-    submitButtonSelector: '.form__btn-submit',
-    deactiveButtonClass: 'form__btn-submit_error',
-    inputErrorClass: 'form__item_line-error',
-    errorClass: 'form__item-error_active'
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__btn-submit',
+    deactiveButtonClass: 'popup__btn-submit_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    spanErrorClass: 'popup__input-error',
+    errorClass: 'popup__input-error_active'
   };
   
   // добавление класса с ошибкой
   
-  const showInputError = (formElement, inputElement, errMessage, validationConfig) => {
-    const errorElement = formElement.querySelector('.${inputElement.id}-error');
+  const showInputError = (formElement, inputElement, errorMessage, validationConfig) => {
+    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.add(validationConfig.inputErrorClass);
-    errorElement.textContent = errMessage;
+    errorElement.textContent = errorMessage;
     errorElement.classList.add(validationConfig.errorClass);
   };
   
   // удаление класса с ошибкой
   
-  const hideInputError = (formElement, inputElement, errMessage, validationConfig) => {
-    const errorElement = formElement.querySelector('.${inputElement.id}-error');
+  const hideInputError = (formElement, inputElement, validationConfig) => {
+    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.remove(validationConfig.inputErrorClass);
     errorElement.textContent = '';
     errorElement.classList.remove(validationConfig.errorClass);
@@ -32,11 +33,12 @@ const validationConfig = {
   // проверка валидности поля инпута
   
   const isValid = (formElement, inputElement) => {
+    
     if (!inputElement.validity.valid) {
       showInputError(formElement, inputElement, inputElement.validationMessage, validationConfig);
     } else {
       hideInputError(formElement, inputElement, validationConfig);
-    }
+    };
   };
   
   // проверка валидности всех полей формы
@@ -44,7 +46,7 @@ const validationConfig = {
   const hasInvalidInput = (inputList) => {
     return inputList.some((inputElement) => {
       return !inputElement.validity.valid;
-    })
+    });
   };
   
   // изменение статус кнопки "сохранить"
@@ -62,9 +64,8 @@ const validationConfig = {
   // listener для инпутов
   
   const setEventListeners = (formElement, validationConfig) => {
-    const inputList= array.from(formELement.querySelectorAll(validationConfig.inputSelector));
+    const inputList = Array.from(formElement.querySelectorAll(validationConfig.inputSelector));
     const buttonElement = formElement.querySelector(validationConfig.submitButtonSelector);
-  
     toggleBtnState(inputList, buttonElement, validationConfig);
   
     inputList.forEach((inputElement) => {
@@ -78,7 +79,7 @@ const validationConfig = {
   // listener для форм
   
   const enableValidation = (validationConfig) => {
-    const formList = array.from(document.querySelectorAll(validationConfig.formSelector));
+    const formList = Array.from(document.querySelectorAll(validationConfig.formSelector));
     formList.forEach((formElement) => {
       setEventListeners(formElement, validationConfig);
     });

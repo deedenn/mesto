@@ -46,10 +46,10 @@
             <form class="form form_edit" name="edit_form" novalidate>
                 <input type="text" id="input__name" value="Жак-Ив Кусто" class="popup__input popup__input_el_name"
                     minlength="2" maxlength="40" required>
-                <span class="name-input-error popup__input-error"></span>
+                <span class="input__name-error popup__input-error"></span>
                 <input type="text" id="input__description" value="Исследователь океана"
                     class="popup__input popup__input_el_description" required minlength="2" maxlength="200">
-                <span class="description-input-error popup__input-error"></span>
+                <span class="input__description-error popup__input-error"></span>
                 <button type="submit" class="popup__btn-submit">Сохранить</button>
             </form>
         </div>
@@ -60,11 +60,12 @@
             <button class="popup__btn-close" type="button"></button>
             <h3 class="popup__name">Новое место</h3>
             <form class="form form_add" name="add_form">
-                <input type="text" id="input__title" class="popup__input popup__input_el_title" placeholder="Название" minlength="2" maxlength="30" required>
-                <span class="title-input-error popup__input-error"></span>
-                <input type="text" id="input__link" class="popup__input popup__input_el_link"
+                <input type="text" id="input__title" class="popup__input popup__input_el_title" placeholder="Название"
+                    minlength="2" maxlength="30" required>
+                <span class="input__title-error popup__input-error"></span>
+                <input type="url" id="input__link" class="popup__input popup__input_el_link"
                     placeholder="Ссылка на картинку" required>
-                <span class="link-input-error popup__input-error"></span>
+                <span class="input__link-error popup__input-error"></span>
                 <button type="submit" class="popup__btn-submit">Создать</button>
             </form>
         </div>
