@@ -123,10 +123,12 @@ popupsCloseBtn.forEach((button) => {
 // закрыть попап по Esc
 
 const closeOnEsc = (evt) => {
-  if (evt.key === 'Escape') {
-    document.querySelector('.popup_opened').classList.remove('popup_opened');
+  if (evt.key === 'Escape') {    
+      closePopup(popupEdit);
+      closePopup(popupAdd);
+      closePopup(popupBigImage);
+    }
   }
-}
 
 // закрыть попап на оверлей
 
