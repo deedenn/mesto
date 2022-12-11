@@ -107,6 +107,7 @@ initialCards.forEach(renderCard);
 
 function openPopup (popup) {
     popup.classList.add('popup_opened');
+    document.addEventListener('keydown', closeOnEsc);
 };
 
 // закрыть попап
@@ -116,8 +117,19 @@ popupsCloseBtn.forEach((button) => {
   button.addEventListener('click', () => closePopup(popup));
 });
 
+
+
+// закрыть попап по Esc
+
+const closeOnEsc = (evt) => {
+  if (evt.key === 'Escape') {
+    document.querySelector('.popup_opened').classList.remove('popup_opened');
+  }
+}
+
 function closePopup (popup) {
-    popup.classList.remove('popup_opened');
+  popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closeOnEsc);
 };
 
 // сохранить изменения Edit
