@@ -6,6 +6,7 @@ const profileEditBtn = document.querySelector('.profile__edit-btn');
 const profileAddBtn = document.querySelector('.profile__add-btn');
 const popupsCloseBtn = document.querySelectorAll('.popup__btn-close');
 const popupSaveBtn = document.querySelector('.popup__btn-submit');
+const popupsSaveBtn = document.querySelectorAll('.popup__btn-submit');
 const popupImage = document.querySelector('.popup_showimg');
 const popupBigImage = document.querySelector('.big-popup__image');
 const popupBigName = document.querySelector('.big-popup__name');
@@ -124,9 +125,7 @@ popupsCloseBtn.forEach((button) => {
 
 const closeOnEsc = (evt) => {
   if (evt.key === 'Escape') {    
-      closePopup(popupEdit);
-      closePopup(popupAdd);
-      closePopup(popupBigImage);
+      closePopup(document.querySelector('.popup_opened'));
     }
   }
 
@@ -162,7 +161,9 @@ function savePopupAdd (evt) {
   closePopup(popupAdd);
   inputTitle.value = '';
   inputLink.value = '';
-};
+  const popupAddBtnSave = this.querySelector('.popup__btn-submit');
+  popupAddBtnSave.classList.add('popup__btn-submit_disabled');
+}
 
 // обработка событий кнопок
 
