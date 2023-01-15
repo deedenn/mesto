@@ -1,12 +1,12 @@
 class Card {
-    constructor(data, templateSelector, renderBigPopup) {
+    constructor(data, templateSelector, popupImage, popupBigImage, popupBigName, openPopup) {
         this._name = data.name;
         this._image = data.link;
         this._alt = data.alt;
-//        this._popupBigImage = popupBigImage;
-//        this._popupBigName = popupBigName;
-//        this._openPopup = openPopup;
-        this._renderBigPopup = renderBigPopup;
+        this._popupImage = popupImage;
+        this._popupBigImage = popupBigImage;
+        this._popupBigName = popupBigName;
+        this._openPopup = openPopup;
         this._templateSelector = templateSelector;
     }
 
@@ -50,14 +50,12 @@ class Card {
 
 // метод для открытия попапа с большой картинкой
     
-//    _showPopupBigImage() {
-//        this._popupBigImage.src = this._image;
-//        this._popupBigName.textContent = this._name;
-//        console.log(this._popupBigName.textContent);
-//        this._popupBigImage.alt = this._alt;
-
-//        this._openPopup(this._popupBigImage);
-//    }
+    _showPopupBigImage() {
+        this._popupBigImage.src = this._image;
+        this._popupBigName.textContent = this._name;
+        this._popupBigImage.alt = this._alt;
+        this._openPopup(this._popupImage);
+    }
 
 // метод инициализации слушателей
 
@@ -74,7 +72,7 @@ class Card {
 
         const bigImage = this._element.querySelector('.element__image');
         bigImage.addEventListener('click', () => {
-            this._renderBigPopup(this._name, this._image);
+            this._showPopupBigImage();
         })
     }
 

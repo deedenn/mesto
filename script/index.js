@@ -68,51 +68,10 @@ const validationConfig = {
   errorClass: 'popup__input-error_active'
 };
 
-// шаблоны
-
-//const cardTemplate = document.querySelector('#element-template').content.querySelector('.element');
-
-// генерация карточки
-
-//const generateCard = (dataCard) => {
-
-//  const newCard = cardTemplate.cloneNode(true);
-  
-//  const cardName = newCard.querySelector('.element__name');
-//  cardName.textContent = dataCard.name;
-
-//  const cardImage = newCard.querySelector('.element__image');
-//  cardImage.src = dataCard.link;
-//  cardImage.alt = dataCard.alt;
-
-//  cardImage.addEventListener('click', () => {
-//    renderBigPopup(dataCard);
-//    openPopup(popupImage);
-//  });
-
-  // добавление лайков
-//  const cardLikeBtn = newCard.querySelector('.element__btn-like');
-//  cardLikeBtn.addEventListener('click', toggleLike);
-
-  // удаление карточки
-//  const deleteBtn = newCard.querySelector('.element__btn-del');
-//  deleteBtn.addEventListener('click', deleteCard);
-  
-//  return newCard;
-//};
-
-//const deleteCard = (evt) => {
-//  evt.target.closest('.element').remove();
-//};
-
-//const toggleLike = (evt) => {
-//  evt.target.classList.toggle('element__btn-like_active');
-//};
-
 // добавление карточки
 
-const renderCard = (dataCard, templateSelector, renderBigPopup) => {
-  const card = new Card(dataCard, '#element-template', renderBigPopup);
+const renderCard = (dataCard, templateSelector, popupImage, popupBigImage, popupBigName, openPopup) => {
+  const card = new Card(dataCard, '#element-template', popupImage, popupBigImage, popupBigName, openPopup);
   elementContainer.prepend(card.getView());
 };
 
@@ -174,10 +133,6 @@ function savePopupAdd (evt) {
   closePopup(popupAdd);
   inputTitle.value = '';
   inputLink.value = '';
-
-//  const submitterBtn = evt.submitter;
-//  submitterBtn.classList.add(validationConfig.deactiveButtonClass);
-//  submitterBtn.setAttribute('disabled', 'true');
   evt.submitter.querySelector('.popup__btn-submit');
   evt.submitter.classList.add('popup__btn-submit_disabled');
 }
@@ -201,11 +156,11 @@ formAddElement.addEventListener('submit', savePopupAdd);
 
 // большой попап
 
-function renderBigPopup(title, link) {
-  popupBigImage.src = link;
-  popupBigName.textContent = title;
-  openPopup(popupBigImage);
-};
+//function renderBigPopup(title, link) {
+//  popupBigImage.src = link;
+//  popupBigName.textContent = title;
+//  openPopup(popupBigImage);
+//};
 
 // включение валидации
 
