@@ -1,13 +1,10 @@
 class Card {
-    constructor(data, templateSelector, popupImage, popupBigImage, popupBigName, openPopup) {
+    constructor(data, templateSelector, renderBigPopup) {
         this._name = data.name;
         this._image = data.link;
         this._alt = data.alt;
-        this._popupImage = popupImage;
-        this._popupBigImage = popupBigImage;
-        this._popupBigName = popupBigName;
-        this._openPopup = openPopup;
-        this._templateSelector = templateSelector;
+        this._renderBigPopup = renderBigPopup;
+        this._templateSelector = templateSelector;  
     }
 
 // метод для получения разметки
@@ -30,9 +27,7 @@ class Card {
 
         const imageElement = this._element.querySelector('.element__image');
         imageElement.src = this._image;
-
-        const altElement = this._element.querySelector('.element__image');
-        altElement.alt = this._alt;
+        imageElement.alt = this._alt;
     }
 
 // метод для удаления карточки
@@ -48,15 +43,6 @@ class Card {
         this._element.querySelector('.element__btn-like').classList.toggle('element__btn-like_active');
     }
 
-// метод для открытия попапа с большой картинкой
-    
-    _showPopupBigImage() {
-        this._popupBigImage.src = this._image;
-        this._popupBigName.textContent = this._name;
-        this._popupBigImage.alt = this._alt;
-        this._openPopup(this._popupImage);
-    }
-
 // метод инициализации слушателей
 
     _setEventListeners() {
@@ -70,10 +56,9 @@ class Card {
             this._toggleLike();
         });
 
-        const bigImage = this._element.querySelector('.element__image');
-        bigImage.addEventListener('click', () => {
-            this._showPopupBigImage();
-        })
+        this._element.querySelector('.element__image').addEventListener('click', () => {
+            this._renderBigPopup(this._name, this._image);
+        });
     }
 
     getView() {

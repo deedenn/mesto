@@ -48,7 +48,7 @@ class FormValidator {
     };
 
 // переключение кнопок
-    _changeBtnPosition = () => {
+    changeBtnPosition = () => {
         if (this._hasInvalidInput()) {
             this._btnEl.classList.add(this._deactiveButtonClass);
             this._btnEl.disabled = true;
@@ -59,13 +59,13 @@ class FormValidator {
     };
 
     _setEventListeners = () => {
-        this._changeBtnPosition(this._inputList, this._btnForm);
+        this.changeBtnPosition(this._inputList, this._btnForm);
 
         this._inputList.forEach((inputEl) => {
-            inputEl.addEventListener('input', () => {
+            inputEl.addEventListener('keydown', () => {
                 this._checkValidity(inputEl);
 
-                this._changeBtnPosition(this._inputList, this._btnForm);
+                this.changeBtnPosition(this._inputList, this._btnForm);
             });
         });
     };

@@ -70,9 +70,10 @@ const validationConfig = {
 
 // добавление карточки
 
-const renderCard = (dataCard, templateSelector, popupImage, popupBigImage, popupBigName, openPopup) => {
-  const card = new Card(dataCard, '#element-template', popupImage, popupBigImage, popupBigName, openPopup);
-  elementContainer.prepend(card.getView());
+const renderCard = (dataCard, templateSelector, renderBigPopup) => {
+  const card = new Card(dataCard, '#element-template', renderBigPopup);
+  const cardElement = card.getView();
+  elementContainer.prepend(cardElement);
 };
 
 // рендер всех карточек
@@ -133,8 +134,8 @@ function savePopupAdd (evt) {
   closePopup(popupAdd);
   inputTitle.value = '';
   inputLink.value = '';
-  evt.submitter.querySelector('.popup__btn-submit');
-  evt.submitter.classList.add('popup__btn-submit_disabled');
+//  evt.submitter.querySelector('.popup__btn-submit');
+//  evt.submitter.classList.add('popup__btn-submit_disabled');
 }
 
 // обработка событий кнопок
@@ -156,11 +157,11 @@ formAddElement.addEventListener('submit', savePopupAdd);
 
 // большой попап
 
-//function renderBigPopup(title, link) {
-//  popupBigImage.src = link;
-//  popupBigName.textContent = title;
-//  openPopup(popupBigImage);
-//};
+function renderBigPopup(title, link) {
+  popupBigImage.src = link;
+  popupBigName.textContent = title;
+  openPopup(popupBigImage);
+};
 
 // включение валидации
 
@@ -169,3 +170,4 @@ const validationFormAdd = new FormValidator(validationConfig, formAddElement);
 
 const valdationFormEdit = new FormValidator(validationConfig, formEditElement);
   valdationFormEdit.enableValidation();
+
