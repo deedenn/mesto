@@ -4,12 +4,9 @@ import FormValidator from './FormValidator.js';
 const popupEdit = document.querySelector('.popup_edit');
 const popupAdd = document.querySelector('.popup_add');
 const popups = document.querySelectorAll('.popup');
-const popupShowimg = document.querySelector('.popup_shomimg');
 const profileEditBtn = document.querySelector('.profile__edit-btn');
 const profileAddBtn = document.querySelector('.profile__add-btn');
 const popupsCloseBtn = document.querySelectorAll('.popup__btn-close');
-const popupSaveBtn = document.querySelector('.popup__btn-submit');
-const popupsSaveBtn = document.querySelectorAll('.popup__btn-submit');
 const popupImage = document.querySelector('.popup_showimg');
 const popupBigImage = document.querySelector('.big-popup__image');
 const popupBigName = document.querySelector('.big-popup__name');
@@ -21,8 +18,6 @@ const inputTitle = document.querySelector('.popup__input_el_title');
 const inputLink = document.querySelector('.popup__input_el_link');
 const formEditElement = document.querySelector('.form_edit');
 const formAddElement = document.querySelector('.form_add');
-const elementImage = document.querySelector('.element__image');
-const elementName = document.querySelector('.element__name');
 const elementContainer = document.querySelector('.elements');
 
 const initialCards = [
@@ -71,14 +66,14 @@ const validationConfig = {
 // добавление карточки
 
 const renderCard = (dataCard, templateSelector, renderBigPopup) => {
-  const card = new Card(dataCard, '#element-template', renderBigPopup);
+  const card = new Card(dataCard, templateSelector, renderBigPopup);
   const cardElement = card.getView();
   elementContainer.prepend(cardElement);
 };
 
 // рендер всех карточек
 
-initialCards.forEach(renderCard);
+initialCards.forEach((dataCard) => renderCard(dataCard, '#element-template', renderBigPopup) );
 
 // открыть попап
 
@@ -130,12 +125,13 @@ function savePopupEdit (evt) {
 
 function savePopupAdd (evt) {
   evt.preventDefault();
-  renderCard({name: inputTitle.value, link: inputLink.value});
+  renderCard({name: inputTitle.value, link: inputLink.value, }, '#element-template', renderBigPopup);
   closePopup(popupAdd);
   inputTitle.value = '';
   inputLink.value = '';
-//  evt.submitter.querySelector('.popup__btn-submit');
-//  evt.submitter.classList.add('popup__btn-submit_disabled');
+  const submitterBtn = evt.submitter;
+  submitterBtn.classList.add(validationConfig.deactiveButtonClass);
+  submitterBtn.setAttribute('disabled', 'true');
 }
 
 // обработка событий кнопок
@@ -157,10 +153,11 @@ formAddElement.addEventListener('submit', savePopupAdd);
 
 // большой попап
 
-function renderBigPopup(title, link) {
+function renderBigPopup(title, link, alt) {
   popupBigImage.src = link;
   popupBigName.textContent = title;
-  openPopup(popupBigImage);
+  popupBigImage.alt = alt;
+  openPopup(popupImage);
 };
 
 // включение валидации

@@ -59,13 +59,13 @@ class FormValidator {
     };
 
     _setEventListeners = () => {
-        this.changeBtnPosition(this._inputList, this._btnForm);
+        this.changeBtnPosition();
 
         this._inputList.forEach((inputEl) => {
-            inputEl.addEventListener('keydown', () => {
+            inputEl.addEventListener('input', () => {
                 this._checkValidity(inputEl);
 
-                this.changeBtnPosition(this._inputList, this._btnForm);
+                this.changeBtnPosition();
             });
         });
     };

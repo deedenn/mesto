@@ -25,9 +25,9 @@ class Card {
         const nameElement = this._element.querySelector('.element__name');
         nameElement.textContent = this._name;
 
-        const imageElement = this._element.querySelector('.element__image');
-        imageElement.src = this._image;
-        imageElement.alt = this._alt;
+        this._imageElement = this._element.querySelector('.element__image');
+        this._imageElement.src = this._image;
+        this._imageElement.alt = this._alt;
     }
 
 // метод для удаления карточки
@@ -56,7 +56,7 @@ class Card {
             this._toggleLike();
         });
 
-        this._element.querySelector('.element__image').addEventListener('click', () => {
+        this._imageElement.addEventListener('click', () => {
             this._renderBigPopup(this._name, this._image);
         });
     }
