@@ -27,7 +27,7 @@ class Card {
 
         this._imageElement = this._element.querySelector('.element__image');
         this._imageElement.src = this._image;
-        this._imageElement.alt = this._alt;
+        this._imageElement.alt = this._name;
     }
 
 // метод для удаления карточки

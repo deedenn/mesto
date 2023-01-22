@@ -24,32 +24,26 @@ const initialCards = [
   {
     name: 'Архыз',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
-    alt: 'Архыз'
   },
   {
     name: 'Челябинская область',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg',
-    alt: 'Челябинская область'
   },
   {
     name: 'Иваново',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',
-    alt: 'Иваново'
   },
   {
     name: 'Камчатка',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
-    alt: 'Камчатка'
   },
   {
     name: 'Холмогорский район',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg',
-    alt: 'Холмогорский район'
   },
   {
     name: 'Байкал',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
-    alt: 'Байкал'
   }
 ];
 
@@ -129,9 +123,7 @@ function savePopupAdd (evt) {
   closePopup(popupAdd);
   inputTitle.value = '';
   inputLink.value = '';
-  const submitterBtn = evt.submitter;
-  submitterBtn.classList.add(validationConfig.deactiveButtonClass);
-  submitterBtn.setAttribute('disabled', 'true');
+  validationFormAdd.changeBtnPosition();
 }
 
 // обработка событий кнопок
@@ -153,10 +145,10 @@ formAddElement.addEventListener('submit', savePopupAdd);
 
 // большой попап
 
-function renderBigPopup(title, link, alt) {
+function renderBigPopup(title, link) {
   popupBigImage.src = link;
   popupBigName.textContent = title;
-  popupBigImage.alt = alt;
+  popupBigImage.alt = title;
   openPopup(popupImage);
 };
 
