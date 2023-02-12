@@ -1,10 +1,9 @@
 class Card {
-    constructor(data, templateSelector, renderBigPopup) {
+    constructor(data, templateSelector, handleCardClick) {
         this._name = data.name;
         this._image = data.link;
-        this._alt = data.alt;
-        this._renderBigPopup = renderBigPopup;
-        this._templateSelector = templateSelector;  
+        this._templateSelector = templateSelector;
+        this._handleCardClick = handleCardClick;
     }
 
 // метод для получения разметки
@@ -57,7 +56,7 @@ class Card {
         });
 
         this._imageElement.addEventListener('click', () => {
-            this._renderBigPopup(this._name, this._image);
+            this._handleCardClick(this._name, this._image);
         });
     }
 

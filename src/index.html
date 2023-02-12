@@ -5,21 +5,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./pages/index.css">
     <title>Mesto Russia</title>
 </head>
 
 <body class="root">
 
     <header class="header">
-        <img class="header__logo" src="./images/logo.svg" alt="Логотип Mesto">
+        <img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="Логотип Mesto">
     </header>
 
     <main class="main">
 
         <section class="profile">
             <div class="profile__container">
-                <img class="profile__avatar" src="./images/avatar.jpg" alt="Аватар">
+                <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="Аватар">
                 <div class="profile__info">
                     <div class="profile__wrap">
                         <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -83,7 +82,7 @@
 
     <template id="element-template">
         <article class="element">
-            <img class="element__image">
+            <img class="element__image" src=" " alt=" ">
             <button class="element__btn-del" type="button"></button>
             <div class="element__description">
                 <h2 class="element__name"></h2>
@@ -91,8 +90,6 @@
             </div>
         </article>
     </template>
-
-    <script type="module" src="./script/index.js"></script>
 
 </body>
 
