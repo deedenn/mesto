@@ -6,19 +6,19 @@ class Card {
         this._handleCardClick = handleCardClick;
     }
 
-// метод для получения разметки
+    // метод для получения разметки
 
     _getTemplate() {
         const cardElement = document
-        .querySelector(this._templateSelector)
-        .content
-        .querySelector('.element')
-        .cloneNode(true);
+            .querySelector(this._templateSelector)
+            .content
+            .querySelector('.element')
+            .cloneNode(true);
 
         return cardElement;
     }
 
-// метод для установки данных
+    // метод для установки данных
 
     _setData() {
         const nameElement = this._element.querySelector('.element__name');
@@ -29,30 +29,24 @@ class Card {
         this._imageElement.alt = this._name;
     }
 
-// метод для удаления карточки
+    // метод для удаления карточки
 
     _deleteCard() {
         this._element.remove();
         this._element = null;
     }
 
-// метод для лайка карточки
-
-    _toggleLike() {
-        this._element.querySelector('.element__btn-like').classList.toggle('element__btn-like_active');
-    }
-
-// метод инициализации слушателей
+    // метод инициализации слушателей
 
     _setEventListeners() {
-        const deleteBtn = this._element.querySelector('.element__btn-del');
-        deleteBtn.addEventListener('click', () => {    
+        const btnDelete = this._element.querySelector('.element__btn-del');
+        btnDelete.addEventListener('click', () => {
             this._deleteCard();
         });
-        
+
         const cardLikeBtn = this._element.querySelector('.element__btn-like');
         cardLikeBtn.addEventListener('click', () => {
-            this._toggleLike();
+            cardLikeBtn.classList.toggle('element__btn-like_active');
         });
 
         this._imageElement.addEventListener('click', () => {

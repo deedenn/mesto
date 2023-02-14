@@ -12,7 +12,7 @@ class FormValidator {
         this._btnEl = this._form.querySelector(this._submitButtonSelector);
     }
 
-// метод поиска ошибки
+    // метод поиска ошибки
 
     _showInputError = (inputEl, errorMessage) => {
         this._errorEl = this._form.querySelector(`.${inputEl.id}-error`);
@@ -21,7 +21,7 @@ class FormValidator {
         this._errorEl.classList.add(this._errorClass);
     }
 
-// метод удаления ошибки
+    // метод удаления ошибки
 
     _hideInputError = (inputEl) => {
         this._errorEl = this._form.querySelector(`.${inputEl.id}-error`);
@@ -30,7 +30,7 @@ class FormValidator {
         this._errorEl.classList.remove(this._errorClass);
     };
 
-// метод для проверки ошибки
+    // метод для проверки ошибки
 
     _checkValidity = (inputEl) => {
         if (!inputEl.validity.valid) {
@@ -40,14 +40,14 @@ class FormValidator {
         }
     };
 
-// проверка поля на невалидность
+    // проверка поля на невалидность
     _hasInvalidInput = () => {
         return this._inputList.some((inputEl) => {
             return !inputEl.validity.valid;
         });
     };
 
-// переключение кнопок
+    // переключение кнопок
     changeBtnPosition = () => {
         if (this._hasInvalidInput()) {
             this._btnEl.classList.add(this._deactiveButtonClass);
@@ -73,6 +73,16 @@ class FormValidator {
     enableValidation = () => {
         this._setEventListeners();
     };
+
+    // очистка форм от ошибок
+  resetValidaition() {
+    this.changeBtnPosition();
+
+    this._inputList.forEach((inputEl) => {
+      this._hideInputError(inputEl) // очистка ошибок
+    });
+  }
+
 }
 
 export default FormValidator;
