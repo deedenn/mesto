@@ -14,7 +14,7 @@ import {
   profileDescription,
   formEditElement,
   formAddElement,
-  elementContainer
+  cradsContainer
 } from '../utils/constants.js';
 
 // загрузка начальных карточек
@@ -32,8 +32,8 @@ cardSection.renderItems();
 // класс UserInfo
 
 const profileInputValues = new UserInfo({
-  nameSelector: '.profile__name',
-  descriptionSelector: '.profile__description'
+  name: '.profile__name',
+  description: '.profile__description'
 });
 
 // большой попап
@@ -61,7 +61,7 @@ popupEditForm.setEventListeners();
 const popupAddCard = new PopupWithForm({
   popupSelector: '.popup_add',
   handleFormSubmit: (formData) => {
-    elementContainer.prepend(createCard(formData));
+    cardSection.addItem(createCard(formData));
     popupAddCard.close();
   }
 });

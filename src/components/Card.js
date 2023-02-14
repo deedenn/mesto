@@ -36,17 +36,23 @@ class Card {
         this._element = null;
     }
 
+    // метод лайк карточки
+
+    _handleLikeCard() {
+        this._cardLikeBtn.classList.toggle('element__btn-like_active');
+    }
+
     // метод инициализации слушателей
 
     _setEventListeners() {
-        const btnDelete = this._element.querySelector('.element__btn-del');
-        btnDelete.addEventListener('click', () => {
+        this._btnDelete = this._element.querySelector('.element__btn-del');
+        this._btnDelete.addEventListener('click', () => {
             this._deleteCard();
         });
 
-        const cardLikeBtn = this._element.querySelector('.element__btn-like');
-        cardLikeBtn.addEventListener('click', () => {
-            cardLikeBtn.classList.toggle('element__btn-like_active');
+        this._cardLikeBtn = this._element.querySelector('.element__btn-like');
+        this._cardLikeBtn.addEventListener('click', () => {
+            this._handleLikeCard();
         });
 
         this._imageElement.addEventListener('click', () => {
@@ -58,7 +64,6 @@ class Card {
         this._element = this._getTemplate();
         this._setData();
         this._setEventListeners();
-
         return this._element;
     }
 

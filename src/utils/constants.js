@@ -43,4 +43,4 @@ export const profileName = document.querySelector('.profile__name');
 export const profileDescription = document.querySelector('.profile__description');
 export const formEditElement = document.querySelector('.form_edit');
 export const formAddElement = document.querySelector('.form_add');
-export const elementContainer = document.querySelector(".elements")
+export const cradsContainer = document.querySelector(".elements")
