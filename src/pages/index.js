@@ -179,10 +179,10 @@ function createCard(data) {
     handleDeleteCard: (cardId) => {
       popupDelCard.open();
       popupDelCard.handleFormSubmit(() => {
-        popupDelCard.setBtnText('Удаление...');
+        popupDelCard.setBtnText('Удаление...')
         api.deleteCard(cardId)
         .then(() => {
-          cardElement.removeCard();
+          card.removeCard();
           popupDelCard.close();
         })
         .catch((err) => {

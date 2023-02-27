@@ -4,12 +4,21 @@ export default class Api {
         this._headers = headers;
     }
 
+    _checkResponse(response) {
+        if (response.ok) {
+            return response.json();
+        } else {
+            console.log('Ошибка');
+            return Promise.reject(`Ошибка: ${response.status}`);
+        }
+    }
+
     // получение информации о пользователе
     getUserInfo() {
         return fetch(`${this._url}/users/me`, {
             headers: this._headers
         })
-        .then(res => res.ok ? res.json() : Promise.reject());
+            .then(this._checkResponse);
     }
 
     // загрузка всех карточек
@@ -18,7 +27,7 @@ export default class Api {
         return fetch(`${this._url}/cards`, {
             headers: this._headers
         })
-        .then(res => res.ok ? res.json() : Promise.reject());
+        .then(this._checkResponse);
     }
 
     // редактирование профиля
@@ -31,7 +40,7 @@ export default class Api {
                 about: data.about,
             })
         })
-        .then(res => res.ok ? res.json() : Promise.reject());
+        .then(this._checkResponse);
     }
 
     // поменять аватар
@@ -44,13 +53,12 @@ export default class Api {
                 avatar: data.link,
             })
         })
-        .then(res => res.ok ? res.json() : Promise.reject());
-        }
+        .then(this._checkResponse);
+    }
 
     // добавление новой карточки
 
     addNewCard(name, link) {
-        console.log(name, link);
         return fetch(`${this._url}/cards`, {
             method: "POST",
             headers: this._headers,
@@ -59,7 +67,7 @@ export default class Api {
                 link: link,
             })
         })
-        .then(res => res.ok ? res.json() : Promise.reject());
+        .then(this._checkResponse);
     }
 
     // удаление созданной карточки
@@ -69,7 +77,7 @@ export default class Api {
             method: "DELETE",
             headers: this._headers
         })
-        .then(res => res.ok ? res.json() : Promise.reject());
+        .then(this._checkResponse);
     }
 
     // лайк карточке
@@ -79,7 +87,7 @@ export default class Api {
             method: "PUT",
             headers: this._headers
         })
-        .then(res => res.ok ? res.json() : Promise.reject());
+        .then(this._checkResponse);
     }
 
     // убрать лайк
@@ -89,7 +97,7 @@ export default class Api {
             method: "DELETE",
             headers: this._headers
         })
-        .then(res => res.ok ? res.json() : Promise.reject());
+        .then(this._checkResponse);
     }
 
 }
