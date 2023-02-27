@@ -1,8 +1,9 @@
 export default class Popup {
     constructor(popupSelector) {
         this._popup = document.querySelector(popupSelector);
-        this._btnClose = this._popup.querySelector('.popup__btn-close')
+        this._btnClose = this._popup.querySelector('.popup__btn-close');
         this._handleEscClose = this._handleEscClose.bind(this);
+        this._btnSave = this._popup.querySelector('.popup__btn-submit');
     }
 
     open() {
@@ -30,6 +31,9 @@ export default class Popup {
                 this.close();
             }
         });
+    }
 
+    setBtnText(text) {
+        this._btnSave.textContent = text;
     }
 }

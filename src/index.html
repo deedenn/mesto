@@ -18,6 +18,7 @@
 
         <section class="profile">
             <div class="profile__container">
+                <button class="profile__avatar-btn" type="button"></button>
                 <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="Аватар">
                 <div class="profile__info">
                     <div class="profile__wrap">
@@ -43,10 +44,10 @@
             <button class="popup__btn-close" type="button"></button>
             <h3 class="popup__name">Редактировать профиль</h3>
             <form class="form form_edit" name="edit_form" novalidate>
-                <input type="text" id="inputName" name="name" value="Жак-Ив Кусто" class="popup__input popup__input_el_name"
-                    minlength="2" maxlength="40" required>
+                <input type="text" id="inputName" name="name" value=""
+                    class="popup__input popup__input_el_name" minlength="2" maxlength="40" required>
                 <span class="inputName-error popup__input-error"></span>
-                <input type="text" id="inputDescription" name="description" value="Исследователь океана"
+                <input type="text" id="inputDescription" name="about" value=""
                     class="popup__input popup__input_el_description" required minlength="2" maxlength="200">
                 <span class="inputDescription-error popup__input-error"></span>
                 <button type="submit" class="popup__btn-submit">Сохранить</button>
@@ -59,8 +60,8 @@
             <button class="popup__btn-close" type="button"></button>
             <h3 class="popup__name">Новое место</h3>
             <form class="form form_add" name="add_form" novalidate>
-                <input type="text" id="inputTitle" name="name" class="popup__input popup__input_el_title" placeholder="Название"
-                    minlength="2" maxlength="30" required>
+                <input type="text" id="inputTitle" name="name" class="popup__input popup__input_el_title"
+                    placeholder="Название" minlength="2" maxlength="30" required>
                 <span class="inputTitle-error popup__input-error"></span>
                 <input type="url" id="inputLink" name="link" class="popup__input popup__input_el_link"
                     placeholder="Ссылка на картинку" required>
@@ -80,13 +81,39 @@
         </div>
     </div>
 
+    <div class="popup popup_submit">
+        <div class="popup__container popup__container_submit">
+            <button class="popup__btn-close" type="button"></button>
+            <h3 class="popup__name">Вы уверены?</h3>
+            <form class="form form_submit">
+                <button type="submit" class="popup__btn-submit popup__btn-submit_yes">Да</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="popup popup_new-avatar">
+        <div class="popup__container popup__container_new-avatar">
+            <button class="popup__btn-close" type="button"></button>
+            <h3 class="popup__name">Обновить аватар</h3>
+            <form class="form form_new-avatar" name="avatar-data" novalidate>
+                <input id="inputAvatar" name="link" class="popup__input popup__input_avatar_src"
+                    placeholder="Ссылка на аватар" type="url" required />
+                <span class="inputAvatar-error popup__input-error"></span>
+                <button type="submit" class="popup__btn-submit popup__btn-submit_new-avatar" disabled>Сохранить</button>
+            </form>
+        </div>
+    </div>
+
     <template id="element-template">
         <article class="element">
             <img class="element__image" src=" " alt=" ">
             <button class="element__btn-del" type="button"></button>
             <div class="element__description">
                 <h2 class="element__name"></h2>
-                <button class="element__btn-like" type="button"></button>
+                <div class="element__likes">
+                    <button class="element__btn-like" type="button"></button>
+                    <p class="element__like_counter">0</p>
+                </div>
             </div>
         </article>
     </template>
