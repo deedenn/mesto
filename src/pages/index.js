@@ -117,6 +117,7 @@ popupEditAvatar.setEventListeners();
 
 profileAvatarBtn.addEventListener('click', () => {
   popupEditAvatar.open();
+  popupEditAvatar.resetValidaition();
 });
 
 // попап новой карточки

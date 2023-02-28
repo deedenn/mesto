@@ -13,7 +13,7 @@ export default class Popup {
 
     close() {
         this._popup.classList.remove('popup_opened');
-        document.addEventListener('keydown', this._handleEscClose);
+        document.removeEventListener('keydown', this._handleEscClose);
     }
 
     _handleEscClose(evt) {
@@ -34,6 +34,8 @@ export default class Popup {
     }
 
     setBtnText(text) {
-        this._btnSave.textContent = text;
+        if (this._btnSave) {
+            this._btnSave.textContent = text;
+        }
     }
 }
